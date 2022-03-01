@@ -35,9 +35,54 @@
         <!-- search field -->
         <section id="serch-field-section" class="container my-3">
             <div class="input-group mx-auto">
-                <input type="text" id="search-field" class="form-control border-dark" placeholder="search brand i.e apple"
-                    aria-label="" aria-describedby="search-btn">
-                <button class="btn btn-outline-secondary border-dark" type="button" id="search-btn">SEARCH</button>
+                <input type="text" id="search-field" class="form-control border-dark"
+                    placeholder="search phone" aria-label="" aria-describedby="search-btn">
+                <button onclick="searchProducts()" class="btn btn-outline-secondary border-dark" type="button" id="search-btn">SEARCH</button>
+            </div>
+        </section>
+
+        <!-- search result -->
+        <section class="container">
+            <div id="product-container" class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text"></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col">
+                    <div class="card h-100">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a short card.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                                to additional content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>
