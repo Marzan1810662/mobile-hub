@@ -1,10 +1,18 @@
 /*----------------------------- google font --------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
+/* -----------------------------common styles-------------------------- */
 body{
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     background-color: #f9f9f9;
+}
+.button{
+    color: black;
+}
+.button:hover{
+    background-color:#b45400;
+    color: white;
+    font-weight: bolder;
 }
 /* ---------------------------header----------------------------------- */
 h1{
@@ -18,19 +26,27 @@ h1{
 #serch-field-section{
     width: 50%;
 }
-#search-btn{
+/* #search-btn{
     color: black;
 }
 #search-btn:hover{
-    /* background-color: white; */
     background-color:#b45400;
     color: white;
     font-weight: bolder;
-}
+} */
+
 /* ---------------------------search result----------------------------- */
 .search-result-card{
     border: 1px solid rgba(179, 177, 177, 0.247);
 }
+/* .details-btn{
+    color: black;
+}
+.details-btn:hover{
+    background-color:#b45400;
+    color: white;
+    font-weight: bolder;
+} */
 
 
 

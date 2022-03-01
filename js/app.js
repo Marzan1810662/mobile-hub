@@ -23,9 +23,9 @@ const displaySearchResult = (products) => {
                         <img src="${product.image}" class="card-img-top w-75 mx-auto p-3" alt="phone">
                         <div class="card-body">
                             <h5 class="card-title">${product.brand}</h5>
-                            <p class="card-text">${product.phone_name}</p>
+                            <p class="card-text fs-4">${product.phone_name}</p>
                             <a  href="#">
-                            <button class="btn border border-2 w-75">Details</button>
+                            <button class="btn border border-1 border-dark w-75 button">Details</button>
                             </a>
                         </div>
                     </div>
