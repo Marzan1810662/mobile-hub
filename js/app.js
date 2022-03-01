@@ -2,6 +2,7 @@ const searchProducts = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value.toLowerCase();
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+
     /*  clearing search field after clicking search button */
     searchField.value = '';
     displaySpinner();
@@ -30,6 +31,7 @@ const displaySearchResult = (products) => {
     document.getElementById('error-div').style.display = 'none';
     document.getElementById('product-detail-container').textContent = '';
     searchReasults.textContent = '';
+    document.getElementById('show-all-btn-section').innerHTML = '';
 
     /* Error message if no result found */
     if (products.length === 0) {
@@ -82,7 +84,7 @@ const displayShowAllButton = (products) => {
     div.innerHTML = `
         <button onclick="showAllProducts()" class="btn border border-1 border-dark w-50 button">Show All</button>
         `;
-    document.getElementById('search-result-section').appendChild(div);
+    document.getElementById('show-all-btn-section').appendChild(div);
 }
 
 /* show all products when 'show all' is clicked */
