@@ -104,39 +104,39 @@ const loadProductDetails = (productId) => {
         .catch(error => console.log(error));
 }
 
-/* display prouct details */
+/* display product details */
 const displayProductDetail = (product) => {
     console.log(product);
     const productDetailContainer = document.getElementById('product-detail-container');
     const div = document.createElement('div');
-    div.classList.add('card', 'h-100', 'mb-3')
+    div.classList.add('card', 'h-100', 'mb-3', 'py-2')
     div.innerHTML = `
         <div class="row g-0">
-        <div class="col-md-5 text-center">
+        <div class="col-md-6 text-center ps-1">
         <img src="${product.image}" class="img-fluid rounded-start mx-auto py-3 h-100" alt="...">
         </div>
-        <div class="col-md-7 ps-2">
+        <div class="col-md-6 ps-2">
         <div class="card-body">
-            <h5 class="card-title fw-bold">${product.name}</h5>
-            <p class="card-text"><span class="fw-bold">Chip:</span> ${product.mainFeatures.chipSet}</p>
-            <p class="card-text"><span class="fw-bold">Display Size:</span> ${product.mainFeatures.displaySize}</p>
-            <p class="card-text"><span class="fw-bold">Memory:</span> ${product.mainFeatures.memory}</p>
-            <ul>
-            <li>${product.mainFeatures.sensors[0]}</li>
-            <li>${product.mainFeatures.sensors[1]}</li>
-            <li>${product.mainFeatures.sensors[2]}</li>
-            <li>${product.mainFeatures.sensors[3]}</li>
-            <li>${product.mainFeatures.sensors[4]}</li>
-            <li>${product.mainFeatures.sensors[5]}</li>
+            <h5 class="card-title fw-bold">${product.brand} ${product.name}</h5>
+            <p class="card-text"><span class="fw-bold">- Display Size:</span> ${product.mainFeatures.displaySize ? product.mainFeatures.displaySize : ''}</p>
+            <p class="card-text"><span class="fw-bold">- Memory:</span> ${product.mainFeatures.memory ? product.mainFeatures.memory : ''}</p>
+            <span class="fw-bold">- Sensors:</span>
+            <ul id="${product.slug}sensors" >
             </ul>
-            <p class="card-text"><span class="fw-bold">Storage:</span> ${product.mainFeatures.storage}</p>
+            <p class="card-text"><span class="fw-bold">- Chip:</span> ${product.mainFeatures.chipSet ? product.mainFeatures.chipSet : ''}</p>
+            <p class="card-text"><span class="fw-bold">- Storage:</span> ${product.mainFeatures.storage ? product.mainFeatures.storage : ''}</p>
             <p class="card-text"><small class="text-muted">${product.releaseDate ? product.releaseDate : 'No release date found'}</small></p>
         </div>
         </div>
     </div>
     `;
     productDetailContainer.appendChild(div);
-
+    product.mainFeatures?.sensors?.forEach(sensor => {
+        console.log(sensor);
+        const li = document.createElement('li');
+        li.innerText = sensor;
+        document.getElementById(`${product.slug}sensors`).appendChild(li);
+    });
 }
 
 /* display error message */
