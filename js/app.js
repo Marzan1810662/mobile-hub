@@ -1,3 +1,4 @@
+/* load products */
 const searchProducts = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value.toLowerCase();
@@ -15,10 +16,6 @@ const searchProducts = () => {
             .then(data => displaySearchResult(data.data))
             .catch(error => displayErrorMessage('Something went wrong. Please try again later'));
     }
-}
-/* get all products */
-const getAllproducts = () => {
-    return 'a';
 }
 
 /* display spinner */
@@ -83,7 +80,6 @@ const showProduct = (product) => {
 let allproducts;
 /* show more button to show all the products */
 const displayShowAllButton = (products) => {
-    console.log(products);
     allproducts = products;
     const div = document.createElement('div');
     div.classList.add('text-center');
@@ -94,13 +90,11 @@ const displayShowAllButton = (products) => {
 }
 
 /* show all products when 'show all' is clicked */
-
 const showAllProducts = () => {
     const searchReasults = document.getElementById('search-result-container');
     searchReasults.textContent = '';
     /* removing show all button */
     document.getElementById('show-all-btn-section').innerHTML = '';
-    console.log(allproducts);
     allproducts.forEach(product => {
         const div = showProduct(product);
         searchReasults.appendChild(div);
