@@ -4,8 +4,9 @@ const searchProducts = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     /*  clearing search field after clicking search button */
     searchField.value = '';
+
     if (searchText === '') {
-        displayErrorMessage('Empty input Field');
+        displayErrorMessage('Empty Input Field!');
     } 
     else {
         fetch(url)
@@ -21,6 +22,12 @@ const displaySearchResult = (products) => {
     /* clearing previous search results */
     document.getElementById('error-div').style.display = 'none';
     searchReasults.textContent = '';
+
+    /* Error message if no result found */
+    console.log(products);
+    if(products.length === 0){
+        displayErrorMessage('No Result Found!');
+    }
 
     /* displaying products */
     if (products.length > 20) {
@@ -41,7 +48,6 @@ const displaySearchResult = (products) => {
 }
 
 const showProduct = (product) => {
-    // console.log(product);
     const div = document.createElement('div');
     div.classList.add('col', 'p-3');
     div.innerHTML = `
@@ -71,7 +77,6 @@ const displayShowAllButton = () => {
 
 /* display error message */
 const displayErrorMessage = (message) => {
-    //console.log('Empty input Field');
     const errorDIv = document.getElementById('error-div');
     errorDIv.innerHTML = `
     <p class ="text-danger fw-bolder">${message}</p>
