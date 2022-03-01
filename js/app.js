@@ -16,6 +16,10 @@ const searchProducts = () => {
             .catch(error => displayErrorMessage('Something went wrong. Please try again later'));
     }
 }
+/* get all products */
+const getAllproducts = () => {
+    return 'a';
+}
 
 /* display spinner */
 const displaySpinner = () => {
@@ -92,8 +96,11 @@ const displayShowAllButton = (products) => {
 /* show all products when 'show all' is clicked */
 
 const showAllProducts = () => {
-console.log(allproducts);
     const searchReasults = document.getElementById('search-result-container');
+    searchReasults.textContent = '';
+    /* removing show all button */
+    document.getElementById('show-all-btn-section').innerHTML = '';
+    console.log(allproducts);
     allproducts.forEach(product => {
         const div = showProduct(product);
         searchReasults.appendChild(div);
