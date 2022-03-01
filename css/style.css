@@ -35,6 +35,10 @@ h1{
 #error-div{
     display: none;
 }
+/* ----------------------------product details-------------------------- */
+#product-detail-container{
+    width: 50%;
+}
 /* ---------------------------search result----------------------------- */
 .search-result-card{
     border: 1px solid rgba(179, 177, 177, 0.247);
@@ -45,7 +49,12 @@ h1{
 /* ===========================media queries========================== */
 /* ---------------------------mobile devices------------------------- */
 @media only screen and (max-width : 575px) {
+    /* -----------------------------search field--------------------------- */
     #serch-field-section{
+        width: 100%;
+    }
+    /* ----------------------------product details-------------------------- */
+    #product-detail-container{
         width: 100%;
     }
 }
