@@ -4,7 +4,7 @@ const searchProducts = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     /*  clearing search field after clicking search button */
     searchField.value = '';
-
+    displaySpinner();
     if (searchText === '') {
         displayErrorMessage('Empty Input Field!');
     } 
@@ -14,6 +14,12 @@ const searchProducts = () => {
             .then(data => displaySearchResult(data.data))
             .catch(error => console.log(error));
     }
+}
+
+/* display spinner */
+const displaySpinner = () =>{
+    document.getElementById('spinner-div').style.display = 'block';
+    document.getElementById('error-div').style.display = 'none';
 }
 
 const displaySearchResult = (products) => {
@@ -45,6 +51,8 @@ const displaySearchResult = (products) => {
             searchReasults.appendChild(div);
         });
     }
+    
+    document.getElementById('spinner-div').style.display = 'none';
 }
 
 const showProduct = (product) => {
@@ -83,4 +91,5 @@ const displayErrorMessage = (message) => {
     `;
     document.getElementById('search-result-container').textContent ='';
     errorDIv.style.display = 'block';
+    document.getElementById('spinner-div').style.display = 'none';
 }

@@ -27,6 +27,10 @@ h1{
 #serch-field-section{
     width: 50%;
 }
+/* ----------------------------spinner div------------------------------ */
+#spinner-div{
+    display: none;
+}
 /* ---------------------------error messag------------------------------ */
 #error-div{
     display: none;
