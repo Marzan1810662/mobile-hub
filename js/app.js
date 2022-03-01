@@ -4,17 +4,22 @@ const searchProducts = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     /*  clearing search field after clicking search button */
     searchField.value = '';
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => displaySearchResult(data.data))
-        .catch(error => console.log(error));
+    if (searchText === '') {
+        displayErrorMessage('Empty input Field');
+    } 
+    else {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => displaySearchResult(data.data))
+            .catch(error => console.log(error));
+    }
 }
 
 const displaySearchResult = (products) => {
     const searchReasults = document.getElementById('search-result-container');
 
     /* clearing previous search results */
+    document.getElementById('error-div').style.display = 'none';
     searchReasults.textContent = '';
 
     /* displaying products */
@@ -27,16 +32,16 @@ const displaySearchResult = (products) => {
         });
         displayShowAllButton();
     }
-    else{
+    else {
         products.forEach(product => {
-                const div = showProduct(product);
-                searchReasults.appendChild(div);
+            const div = showProduct(product);
+            searchReasults.appendChild(div);
         });
     }
 }
 
 const showProduct = (product) => {
-    console.log(product);
+    // console.log(product);
     const div = document.createElement('div');
     div.classList.add('col', 'p-3');
     div.innerHTML = `
@@ -64,4 +69,13 @@ const displayShowAllButton = () => {
     document.getElementById('search-result-section').appendChild(div);
 }
 
-
+/* display error message */
+const displayErrorMessage = (message) => {
+    //console.log('Empty input Field');
+    const errorDIv = document.getElementById('error-div');
+    errorDIv.innerHTML = `
+    <p class ="text-danger fw-bolder">${message}</p>
+    `;
+    document.getElementById('search-result-container').textContent ='';
+    errorDIv.style.display = 'block';
+}
