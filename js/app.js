@@ -16,7 +16,7 @@ const searchProducts = () => {
             .catch(error => displayErrorMessage('Something went wrong. Please try again later'));
     }
 }
-
+let allProducts;
 /* display spinner */
 const displaySpinner = () => {
     document.getElementById('spinner-div').style.display = 'block';
@@ -26,6 +26,8 @@ const displaySpinner = () => {
 /* display search results */
 const displaySearchResult = (products) => {
     const searchReasults = document.getElementById('search-result-container');
+    allProducts = products;
+    console.log(allProducts);
 
     /* clearing previous search results */
     document.getElementById('error-div').style.display = 'none';
@@ -78,8 +80,6 @@ const showProduct = (product) => {
 
 /* show more button to show all the products */
 const displayShowAllButton = (products) => {
-    console.log(products);
-    const productsString = JSON.stringify(products);
     const div = document.createElement('div');
     div.classList.add('text-center');
     div.innerHTML = `
@@ -89,12 +89,13 @@ const displayShowAllButton = (products) => {
 }
 
 /* show all products when 'show all' is clicked */
+
 const showAllProducts = () => {
-     console.log(products);
-    // products.forEach(product => {
-    //     const div = showProduct(product);
-    //     searchReasults.appendChild(div);
-    // });
+     console.log(allproducts);
+    allproducts.forEach(product => {
+        const div = showProduct(product);
+        searchReasults.appendChild(div);
+    });
 }
 
 /* load product details */
@@ -126,7 +127,7 @@ const displayProductDetail = (product) => {
             </ul>
             <p class="card-text"><span class="fw-bold">- Chip:</span> ${product.mainFeatures.chipSet ? product.mainFeatures.chipSet : ''}</p>
             <p class="card-text"><span class="fw-bold">- Storage:</span> ${product.mainFeatures.storage ? product.mainFeatures.storage : ''}</p>
-            <span class="fw-bold">- Others:</span>
+            <span class="fw-bold">${product.others ? '- Others': ''}</span>
             <ul id="${product.slug}others" >
             </ul>
             <p class="card-text"><small class="text-muted">${product.releaseDate ? product.releaseDate : 'No release date found'}</small></p>
@@ -141,7 +142,7 @@ const displayProductDetail = (product) => {
         li.innerText = sensor;
         document.getElementById(`${product.slug}sensors`).appendChild(li);
     });
-    for (const key in product.others) {
+    for (const key in product?.others) {
         console.log(key);
         const li = document.createElement('li');
         li.innerHTML= `<span class="fw-bold">- ${key}:</span>${product.others[key]}`;
