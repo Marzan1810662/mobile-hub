@@ -12,7 +12,7 @@ const searchProducts = () => {
         fetch(url)
             .then(response => response.json())
             .then(data => displaySearchResult(data.data))
-            .catch(error => console.log(error));
+            .catch(error => displayErrorMessage('Something went wrong. Please try again later'));
     }
 }
 
@@ -101,7 +101,7 @@ const loadProductDetails = (productId) => {
     fetch(url)
         .then(response => response.json())
         .then(data => displayProductDetail(data.data))
-        .catch(error => console.log(error));
+        .catch(error => displayErrorMessage('Something went wrong. Please try again later'));
 }
 
 /* display product details */
@@ -130,6 +130,7 @@ const displayProductDetail = (product) => {
         </div>
     </div>
     `;
+    /* sensor information */
     productDetailContainer.appendChild(div);
     product.mainFeatures?.sensors?.forEach(sensor => {
         console.log(sensor);
