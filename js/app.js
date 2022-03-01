@@ -79,6 +79,7 @@ const showProduct = (product) => {
 /* show more button to show all the products */
 const displayShowAllButton = (products) => {
     console.log(products);
+    const productsString = JSON.stringify(products);
     const div = document.createElement('div');
     div.classList.add('text-center');
     div.innerHTML = `
@@ -88,8 +89,8 @@ const displayShowAllButton = (products) => {
 }
 
 /* show all products when 'show all' is clicked */
-const showAllProducts = (products) => {
-    console.log(products);
+const showAllProducts = () => {
+     console.log(products);
     // products.forEach(product => {
     //     const div = showProduct(product);
     //     searchReasults.appendChild(div);
@@ -98,7 +99,6 @@ const showAllProducts = (products) => {
 
 /* load product details */
 const loadProductDetails = (productId) => {
-    console.log(productId);
     url = `https://openapi.programming-hero.com/api/phone/${productId}`;
     fetch(url)
         .then(response => response.json())
@@ -108,7 +108,6 @@ const loadProductDetails = (productId) => {
 
 /* display product details */
 const displayProductDetail = (product) => {
-    console.log(product);
     const productDetailContainer = document.getElementById('product-detail-container');
     const div = document.createElement('div');
     div.classList.add('card', 'h-100', 'mb-3', 'py-2')
@@ -127,6 +126,9 @@ const displayProductDetail = (product) => {
             </ul>
             <p class="card-text"><span class="fw-bold">- Chip:</span> ${product.mainFeatures.chipSet ? product.mainFeatures.chipSet : ''}</p>
             <p class="card-text"><span class="fw-bold">- Storage:</span> ${product.mainFeatures.storage ? product.mainFeatures.storage : ''}</p>
+            <span class="fw-bold">- Others:</span>
+            <ul id="${product.slug}others" >
+            </ul>
             <p class="card-text"><small class="text-muted">${product.releaseDate ? product.releaseDate : 'No release date found'}</small></p>
         </div>
         </div>
@@ -135,11 +137,16 @@ const displayProductDetail = (product) => {
     /* sensor information */
     productDetailContainer.appendChild(div);
     product.mainFeatures?.sensors?.forEach(sensor => {
-        console.log(sensor);
         const li = document.createElement('li');
         li.innerText = sensor;
         document.getElementById(`${product.slug}sensors`).appendChild(li);
     });
+    for (const key in product.others) {
+        console.log(key);
+        const li = document.createElement('li');
+        li.innerHTML= `<span class="fw-bold">- ${key}:</span>${product.others[key]}`;
+        document.getElementById(`${product.slug}others`).appendChild(li);
+    }
 }
 
 /* display error message */
