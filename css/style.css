@@ -4,6 +4,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    background-color: #f9f9f9;
 }
 /* ---------------------------header----------------------------------- */
 h1{
@@ -26,7 +27,10 @@ h1{
     color: white;
     font-weight: bolder;
 }
-
+/* ---------------------------search result----------------------------- */
+.search-result-card{
+    border: 1px solid rgba(179, 177, 177, 0.247);
+}
 
 
 
